@@ -1,0 +1,28 @@
+@import './variables.scss';
+
+.navbar {
+  // position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $brand-dark;
+  padding: 0 2rem;
+
+  a {
+    text-decoration: none;
+    color: $text-light;
+  }
+}
+
+.logo-title {
+  font-size: 2.4rem;
+  margin: 0;
+  padding: 1rem .8rem;
+}
+
+.navbar-item {
+  display: inline-block;
+  padding: .8rem;
+}

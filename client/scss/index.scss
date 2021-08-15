@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&family=Lato:wght@300;400;700&display=swap');
+
+@import './layouts.scss';
+@import './typography.scss';
+@import './forms.scss';
+@import './navbar.scss';
+
+
+// Assmt List
+// ------------
+.assmt-row {
+
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+}
+
+.assmt {
+  border-bottom: 1px solid $border-color;
+  padding: 1rem;
+  transition: all ease .3s;
+
+  &:hover {
+    background-color: $border-color;
+  }
+
+  @include tablet {
+    width: 49%;
+    margin: .5%;
+    border: 1px solid $border-color;
+    padding: 2rem;
+    border-radius: .4rem;
+  }
+
+  @include desktop {
+    width: 24%;
+  }
+}

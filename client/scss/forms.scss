@@ -1,0 +1,52 @@
+@import './variables.scss';
+
+// Forms
+// -----
+input, button {
+  border-width: 1px;
+  border-radius: .2rem;
+  padding: .5rem .8rem;
+  background-color: $body-bg; 
+}
+
+.center-form {
+  max-width: 400px;
+  margin: 0 auto;
+
+  label {
+    width: 20%;
+  }
+
+  input {
+    width: 80%;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    border-color: $brand-highlight;
+    background-color: $brand-highlight;
+    color: $text-light;
+  }
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: .8rem;
+}
+
+.assmt-form {
+  display: flex;
+  justify-content: space-between;
+
+  input {
+    width: 77%;
+  }
+
+  button {
+    background-color: $brand-highlight;
+    border-color: $brand-highlight;
+    color: $text-light;
+    width: 20%;
+  }
+}
