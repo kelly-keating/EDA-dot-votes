@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
+import HostTools from './HostTools'
+
 function Room({ socket, room, user }) {
 
   const [members, setMembers] = useState(room.members)
@@ -30,12 +32,13 @@ function Room({ socket, room, user }) {
     setMembers(newMembers)
   }
 
-  const adminDeets = user.id === room.creator ? 'You are!' : members[room.creator]
+  const isHost = user.id === room.creator
 
   return (
     <div className="room">
       <h1>Room {room.name}</h1>
-      Admin: {adminDeets}
+      Admin: {isHost ? 'You are!' : members[room.creator]}
+      {isHost && <HostTools socket={socket} />}
       <h3>Members:</h3>
       <ul>
         {Object.keys(members).map(id => <li key={id}>{members[id]}</li>)}
