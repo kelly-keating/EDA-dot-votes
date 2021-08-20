@@ -12,10 +12,12 @@ function App() {
 
   const [page, setPage] = useState('join')
   const [room, setRoom] = useState(null)
+  const [user, setUser] = useState(null)
 
   const initSockets = () => {
     socket.on("connect", () => {
       console.log('connected as id', socket.id)
+      setUser({ ...user, id: socket.id })
     })
 
     socket.on('disconnect', () => {
@@ -25,29 +27,6 @@ function App() {
     socket.on('open sesame', (data) => {
       console.log('connected to room', data)
       setRoom(data)
-    })
-
-    socket.on('member left', (data) => {
-      console.log(data, 'disconnected from room')
-      removeMember(data)
-    })
-  }
-
-  const addMember = (id, name) => {
-    setRoom((room) => ({
-      ...room,
-      members: {
-        ...room.members,
-        [id]: name
-      }
-    }))
-  }
-
-  const removeMember = (id) => {
-    setRoom((room) => {
-      const roomCopy = { ...room }
-      delete roomCopy.members[id]
-      setRoom(room)
     })
   }
 
@@ -70,7 +49,7 @@ function App() {
         <CreateRoom socket={socket} />
         <button onClick={() => setPage('join')}>Join existing room?</button>
       </>}
-      {page === 'room' && <Room socket={socket} room={room} addMember={addMember} />}
+      {page === 'room' && <Room socket={socket} room={room} user={user} />}
     </div>
   )
 }
